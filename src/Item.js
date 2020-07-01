@@ -14,6 +14,10 @@ class Item extends Component{
         this.props.addToCart(this.state.item);
     }
 
+    remove=()=>{
+        this.props.removeFromCart(this.state.item)
+    }
+
     render(){
         return(
             <React.Fragment>
@@ -21,7 +25,12 @@ class Item extends Component{
                 <p>Price:{this.state.item.price}</p>
                 {
                     (this.state.isCart==true) ?
-                    (<button>Remove</button>) :
+                    (<p>Qty:{this.state.item.qty}</p>) :
+                    ("")
+                }
+                {
+                    (this.state.isCart==true) ?
+                    (<button onClick={this.remove}>Remove</button>) :
                     (<button onClick={this.add}>Add to Cart</button>)
                 }
                 
